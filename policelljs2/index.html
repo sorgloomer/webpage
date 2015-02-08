@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="policellApp">
+<head>
+	<title>Policell ajánlatok</title>
+	
+  <link rel="stylesheet" href="components/jquery-ui/themes/smoothness/jquery-ui.css" />
+  <!-- bower:css -->
+  <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="components/ng-grid/ng-grid.css" />
+  <link rel="stylesheet" href="components/angular-ui-select/dist/select.css" />
+  <!-- endbower -->  
+  <!-- bower:js -->
+  <script src="components/jquery/dist/jquery.js"></script>
+  <script src="components/angular/angular.js"></script>
+  <script src="components/angular-route/angular-route.js"></script>
+  <script src="components/ng-grid/build/ng-grid.js"></script>
+  <script src="components/angular-ui-select/dist/select.js"></script>
+  <script src="components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="components/jquery-ui/jquery-ui.js"></script>
+  <script src="components/angular-ui-date/src/date.js"></script>
+  <!-- endbower -->
+	
+  <link rel="stylesheet" href="style.css" />
+	<script src="app.js"></script>
+	<script src="pages/WelcomeController.js"></script>
+	<script src="pages/WelcomeService.mock.js"></script>
+</head>
+<body>
+	
+  <div class="contents">
+    <div ng-view class="fill"></div>
+  </div>
+</body>
+</html>

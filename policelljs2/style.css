@@ -1,0 +1,97 @@
+.main-grid {
+  position: absolute;
+  top: 40px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  border: 1px solid rgb(212,212,212);
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+}
+
+.main-bar {
+  position: relative;
+  margin: 5px;
+}
+
+.main-bar-right, .main-bar-left {
+  position: relative;
+  min-height: 1px;
+  float: left;
+}
+.main-bar-right {
+  width: 33.3333%;
+  padding-right: 0;
+  padding-left: 10px;
+}
+.main-bar-left {
+  width: 66.6666%;
+  padding-right: 10px;
+  padding-left: 0;
+}
+.main-bar-refresh, .main-bar-refresh > img {
+  width: 16px;
+  height: 16px;
+}
+.main-bar-refresh {
+  float: right;
+  margin-right: 15px;
+}
+
+.main-search {
+/*  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;*/
+}
+
+.main-date {
+  position: relative;
+  display: inline-block;
+  float: right;
+  width: 120px;
+}
+
+.ui-widget {
+  font-size: 12px;
+}
+.btn, .form-control {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 0;
+}
+
+.form-control {
+  height: 22px;
+}
+
+.ui-select-bootstrap > .ui-select-match > button {
+  /* Instead of center because of .btn */
+  text-align: left;
+}
+
+.ngHeaderText {
+  padding: 4px;
+}
+
+.ngCellText {
+  padding: 4px;
+}
+
+
+.contents {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+}
+html, body, .fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

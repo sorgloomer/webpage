@@ -1,0 +1,23 @@
+<div>
+  <div class="main-bar">
+    <div class="main-bar-left">
+      <span class="btn btn-default" ng-click="refresh()">Frissítés</span>
+      <span class="btn btn-default" ng-click="add()">Új</span>
+      <input ui-date type="text" data-type="date" placeholder="Dátum választó" ng-model="aDate" class="form-control main-date">
+      <span>Név: {{ name.selected }}</span>
+      <span class="main-bar-refresh" ng-show="loading"><img src="images/refresh.png"></img></span>
+    </div>
+    
+    <div class="main-bar-right">
+      <ui-select class="select main-search" ng-model="name.selected" theme="bootstrap">
+        <ui-select-match placeholder="Keresés a magyar keresztnevek között...">
+          {{ $select.selected }}
+        </ui-select-match>
+        <ui-select-choices repeat="name in names" refresh="searchNames($select.search)" refresh-delay="400">
+          <small ng-bind-html="name | highlight: $select.search"></small>
+        </ui-select-choices>    
+      </ui-select>
+    </div>
+  </div>
+  <div ng-grid="gridOptions" class="main-grid"></div>
+</div>
