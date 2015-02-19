@@ -1,18 +1,16 @@
+
 .main-grid {
   position: absolute;
-  top: 40px;
-  bottom: 5px;
-  left: 5px;
-  right: 5px;
   border: 1px solid rgb(212,212,212);
-  padding: 0;
-  margin: 0;
   font-size: 11px;
+  top: 30px;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .main-bar {
   position: relative;
-  margin: 5px;
 }
 
 .main-bar-right, .main-bar-left {
@@ -80,7 +78,6 @@
   padding: 4px;
 }
 
-
 .contents {
   position: absolute;
   top: 5px;
@@ -88,7 +85,59 @@
   bottom: 5px;
   left: 5px;
 }
-html, body, .fill {
+
+.header-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 50px;
+  text-align: center;
+
+  font-family:  Arial, Helvetica, sans-serif;
+}
+
+.header-bar a {
+  text-decoration: none;
+  color: black;
+}
+
+.header-bar .header-item {
+  display: inline-block;
+  height: 50px;
+  width: 120px;
+
+  line-height: 50px;
+  vertical-align: middle;
+  font-size: 20px;
+
+  color: #aaaaaa;
+  border: 1px solid #aaaacc;
+  border-radius: 4px;
+
+  box-shadow: 0 0 1px #aaaacc;
+}
+
+.header-item:hover {
+  color: #555555;
+  box-shadow: 0 0 8px #66aaff;
+}
+
+.header-item.selected {
+  color: black;
+  box-shadow: 0 0 5px #5599dd;
+  border: 1px solid #8888bb;
+}
+
+.tabbed-area {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+html, body {
   position: absolute;
   top: 0;
   right: 0;

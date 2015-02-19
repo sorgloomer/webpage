@@ -1,14 +1,14 @@
 <!doctype html>
-<html ng-app="policellApp">
+<html ng-app="policellApp" ng-controller="I18NController">
 <head>
-	<title>Policell ajánlatok</title>
-	
+  <title>Policell ajánlatok</title>
+
   <link rel="stylesheet" href="components/jquery-ui/themes/smoothness/jquery-ui.css" />
   <!-- bower:css -->
   <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="components/ng-grid/ng-grid.css" />
   <link rel="stylesheet" href="components/angular-ui-select/dist/select.css" />
-  <!-- endbower -->  
+  <!-- endbower -->
   <!-- bower:js -->
   <script src="components/jquery/dist/jquery.js"></script>
   <script src="components/angular/angular.js"></script>
@@ -19,16 +19,31 @@
   <script src="components/jquery-ui/jquery-ui.js"></script>
   <script src="components/angular-ui-date/src/date.js"></script>
   <!-- endbower -->
-	
+
   <link rel="stylesheet" href="style.css" />
-	<script src="app.js"></script>
-	<script src="pages/WelcomeController.js"></script>
-	<script src="pages/WelcomeService.mock.js"></script>
+  <script src="app.js"></script>
+  <script src="modules/common/common.js"></script>
+  <script src="modules/common/i18n.js"></script>
+  <script src="modules/I18NController.js"></script>
+  <script src="modules/common/templates.js"></script>
+
+  <script src="modules/TableDirectives.js"></script>
+  <script src="modules/HeaderController.js"></script>
+  <script src="modules/CommonTableDefinition.js"></script>
+  <script src="modules/SearchController.js"></script>
+  <script src="modules/LatestController.js"></script>
+  <script src="modules/LatestService.mock.js"></script>
 </head>
 <body>
-	
+
   <div class="contents">
-    <div ng-view class="fill"></div>
+    <div class="header-bar" ng-controller="HeaderController">
+      <a class="header-item" href="" ng-class="{ selected: isPage('main') }" ng-click="openPage('main')">{{ S.menu_title_latest }}</a>
+      <a class="header-item" href="" ng-class="{ selected: isPage('search') }" ng-click="openPage('search')">{{ S.menu_title_search }}</a>
+    </div>
+
+    <div class="tabbed-area" ng-view></div>
   </div>
+
 </body>
 </html>

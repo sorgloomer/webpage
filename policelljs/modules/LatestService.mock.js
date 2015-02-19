@@ -1,29 +1,4 @@
-angular.module('policellApp')
-.factory('util', function() {
-  function range(a, fn) {
-    if (fn === undefined) fn = angular.identity;
-    var res = [];
-    for (var i = 0; i < a; i++) {
-      res.push(fn(i));
-    }
-    return res;
-  }
-  function like(a, b) {
-    return ((''+a).toLowerCase()).indexOf((''+b).toLowerCase()) >= 0;
-  }
-
-  return { range: range, like: like };
-})
-.factory('$delay', function($q, $timeout) {
-  return function $delay(time, val) {
-    var def = $q.defer();
-    $timeout(function() {
-      def.resolve(val);
-    }, time);
-    return def.promise;    
-  };
-})
-.factory('WelcomeService', function($q, $delay, util, names) {
+angular.module('policellApp').factory('LatestService', function($q, $delay, util, names) {
 
   function crawl(v) {
     return $delay(400, v);

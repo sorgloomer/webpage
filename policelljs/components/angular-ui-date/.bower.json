@@ -30,6 +30,5 @@
   },
   "_source": "git://github.com/angular-ui/ui-date.git",
   "_target": "~0.0.7",
-  "_originalSource": "angular-ui-date",
-  "_direct": true
+  "_originalSource": "angular-ui-date"
 }

@@ -1,5 +1,5 @@
 angular.module('policellApp')
-.factory('WelcomeService', function($http) {
+.factory('LatestService', function($http) {
   function fl_data(x) {
     return x.data;
   }

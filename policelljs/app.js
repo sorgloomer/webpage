@@ -5,18 +5,14 @@ angular.module('policellApp', [
   'ui.date',
   'ui.select'
 ])
-.config(function($routeProvider, $provide) {
-  
+.config(function($routeProvider) {
 	$routeProvider
+  .when('/search', {
+    controller: 'SearchController',
+    templateUrl: 'modules/SearchPage.html'
+  })
   .otherwise({
-    controller: 'WelcomeController',
-    templateUrl: 'pages/WelcomePage.html'
+    controller: 'LatestController',
+    templateUrl: 'modules/LatestPage.html'
   });
-    
-    /*
-  $provide.decorator('i18nService', function($delegate) {
-    // $delegate.setCurrentLang('hu');
-    return $delegate;
-  });
-  */
 });
