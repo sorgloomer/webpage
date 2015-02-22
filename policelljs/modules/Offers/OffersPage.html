@@ -1,0 +1,24 @@
+<div class="fill">
+  <div class="pagebar">
+    <div class="pagebar-left">
+      <div class="pagebar-block form-group">
+        <input placeholder="{{ ::S.label_nav_search }}" class="form-control" ng-change="notifySearch()" ng-model="search.value">
+      </div>
+      <button class="btn btn-default" ng-click="refresh()">{{ ::S.button_refresh }}</button>
+      <button class="btn btn-default" ng-click="editOffer()">{{ ::S.button_modify_offer }}</button>
+      <span class="icon-refresh" ng-show="loading"></span>
+    </div>
+
+    <div class="pagebar-right">
+      <div class="main-search">
+        <pl-select-customer ng-model="customer"
+                            placeholder="{{ ::S.customer_select }}">
+        </pl-select-customer>
+      </div>
+    </div>
+    <div class="pagebar-right">
+      <pl-datepicker ng-model="aDate" class="form-control main-date"></pl-datepicker>
+    </div>
+  </div>
+  <div ng-grid="gridOptions" class="main-grid"></div>
+</div>
