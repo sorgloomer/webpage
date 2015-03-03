@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sampling based AI</title>
+    <style>
+        .noselect {
+            cursor: default;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -ms-user-select: none;
+        }
+        #maincanvas {
+            display: inline-block;
+            border: 1px solid black;
+            vertical-align: top;
+        }
+        #controls {
+            text-align: left;
+            width: 220px;
+            display: inline-block;
+            border: 1px solid black;
+            padding: 5px;
+            vertical-align: top;
+        }
+        #controls button {
+            width: 30%;
+        }
+
+        #controls {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 8pt;
+        }
+
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas id="maincanvas" class="noselect"></canvas>
+        <div id="controls">
+            <button onclick="app.doStart()">Start</button>
+            <button onclick="app.doStop()">Stop</button>
+            <button onclick="app.doReset()">Reset</button>
+            <div>
+                <div style="display: inline-block;">
+                    <div>Samples generated:</div>
+                    <div>Samples took:</div>
+                    <div>Found cost:</div>
+                </div>
+                <div style="display: inline-block;">
+                    <div id="samplesGenerated"></div>
+                    <div id="samplesTook"></div>
+                    <div id="solutionCost">-</div>
+                </div>
+            </div>
+            <img src="img/thumb1.png" onclick="app.selectMap('img/map1.png');"/>
+            <img src="img/thumb2.png" onclick="app.selectMap('img/map2.png');"/>
+            <img src="img/thumb3.png" onclick="app.selectMap('img/map3.png');"/>
+            <img src="img/thumb4.png" onclick="app.selectMap('img/map4.png');"/>
+            <img src="img/thumb5.png" onclick="app.selectMap('img/map5.png');"/>
+            <img src="img/thumb6.png" onclick="app.selectMap('img/map6.png');"/>
+            <br>
+
+            <input type="radio" name="algorithm" onclick="app.selectAlgorithm('prm');" checked> Prm<br>
+            <input type="radio" name="algorithm" onclick="app.selectAlgorithm('rrt-inc');"> Rrt-Inc<br>
+            <input type="radio" name="algorithm" onclick="app.selectAlgorithm('rrt-voronoi');"> Rrt-Voronoi<br>
+        </div>
+    </div>
+
+    <script src="lib/dat.gui.min.js"></script>
+    <script src="lib/nano-amd.js"></script>
+
+
+    <script src="js/math/vec.js"></script>
+    <script src="js/math/Geom.js"></script>
+    <script src="js/math/NBox.js"></script>
+    <script src="js/math/NBoxTree.js"></script>
+
+    <script src="js/vendor/datgui.js"></script>
+
+    <script src="js/utils/time.js"></script>
+    <script src="js/utils/imgLoad.js"></script>
+    <script src="js/utils/imgConvert.js"></script>
+    <script src="js/utils/Mouse.js"></script>
+    <script src="js/utils/Interval.js"></script>
+    <script src="js/utils/utils.js"></script>
+    <script src="js/utils/UnionFind.js"></script>
+    <script src="js/utils/MultiMap.js"></script>
+    <script src="js/utils/Heap.js"></script>
+    <script src="js/utils/StringMap.js"></script>
+
+    <script src="js/planning/maps.js"></script>
+    <script src="js/planning/helper.js"></script>
+    <script src="js/planning/RrtInc.js"></script>
+    <script src="js/planning/RrtVoronoi.js"></script>
+    <script src="js/planning/Prm.js"></script>
+
+    <script src="js/app/drawing.js"></script>
+    <script src="js/App.js"></script>
+
+    <script>
+        var App = require('App');
+        var app = new App();
+    </script>
+
+</body>
+</html>
