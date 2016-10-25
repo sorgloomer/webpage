@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #main-area {
+      margin-left: auto;
+      margin-right: auto;
+      width: 1000px;
+    }
+
+    #render-canvas {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #data-container {
+      text-align: right;
+    }
+
+    .data-meter th, .data-meter td {
+      width: 120px;
+    }
+
+    .data-table {
+      border-spacing: 0;
+      border-collapse: collapse;
+      border: solid black;
+      border-width: 0 0 1px 1px;
+    }
+    .data-table td, .data-table th {
+      border: solid black;
+    }
+    .data-table td, .data-table th {
+      width: 120px;
+      border-width: 1px 1px 0 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="main-area">
+    <canvas id="render-canvas" width="1000" height="750">
+    </canvas>
+    <div id="data-container">
+      <table class="data-meter">
+        <tr>
+          <th>Time:</th>
+          <td id="data-time"></td>
+        </tr>
+        <tr>
+          <th>Samples:</th>
+          <td id="data-samples"></td>
+        </tr>
+        <tr>
+          <th>Storage:</th>
+          <td id="data-storage"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
+
+
+  <script src="lib/babylon.2.2.max.js"></script>
+  <script src="modules.js"></script>
+  <script src="js/index-3d.js"></script>
+</body>
+</html>

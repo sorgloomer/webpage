@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>GPGPU Ecosystem</title>
+  <style>
+    #main-canvas {
+      display: inline-block;
+      border: 1px solid black;
+      width: 800px;
+      height: 800px;
+    }
+    #main-area {
+    }
+    #options-area {
+      margin-left: 10px;
+    }
+    body {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div id="main-area">
+    <canvas id="main-canvas"></canvas>
+  </div>
+  <div id="options-area">
+    <button id="btn-reset">Reset</button><br/>
+  </div>
+  <script src="shaders.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>

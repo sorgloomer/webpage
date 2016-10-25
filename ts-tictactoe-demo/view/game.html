@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="info-bar">
+    <span ng-class="{active:isTurnOf('x')}">
+      Player <img class="inline-sign" src="img/sign-x.svg">
+      <img class="inline-sign" src="img/user-silhouette.svg" ng-show="getPlayerType('x')=='player'">
+      <img class="inline-sign" src="img/microchip-variant-silhouette.svg" ng-show="getPlayerType('x')=='cpu'">
+    </span>
+    <span ng-class="{active:isTurnOf('o')}">
+      Player <img class="inline-sign" src="img/sign-o.svg">
+      <img class="inline-sign" src="img/user-silhouette.svg" ng-show="getPlayerType('o')=='player'">
+      <img class="inline-sign" src="img/microchip-variant-silhouette.svg" ng-show="getPlayerType('o')=='cpu'">
+    </span>
+  </div>
+  <div class="game-area">
+    <div class="game-table">
+      <div class="inner">
+        <div class="game-cell" ng-repeat="coord in allCoords" ng-click="putSign(coord)">
+          <img class="sign" tt-sign="getCellValue(coord)">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="action-bar">
+    <button class="btn" ng-click="doReset()">Reset</button>
+    <button class="btn" ng-click="doUndo()">Undo</button>
+    <a class="btn" href="#menu">Menu</a>
+  </div>
+  <div class="dialog result-dialog" ng-show="gameResult != 'play'">
+    <h3>Game Over</h3>
+    <div ng-show="gameResult == 'winx'">Player <img class="inline-sign" src="img/sign-x.svg"> wins!</div>
+    <div ng-show="gameResult == 'wino'">Player <img class="inline-sign" src="img/sign-o.svg"> wins!</div>
+    <div ng-show="gameResult == 'tie'">It's a tie!</div>
+  </div>
+</div>
