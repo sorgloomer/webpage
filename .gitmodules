@@ -1,0 +1,3 @@
+[submodule "bute-vr"]
+	path = bute-vr
+	url = https://github.com/sorgloomer/bute-vr.git
