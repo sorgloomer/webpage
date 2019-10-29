@@ -1,0 +1,10 @@
+
+<div style="height:2200px;border:1px solid black;margin:50px;"></div>
+<div id=targetdiv style="position:fixed;background:lightgreen;left:100px;top:100px;">
+    This is a fixed element. The page should scroll down, then scroll back here.
+</div>
+<script>
+    setTimeout(function() {
+        targetdiv.scrollIntoView({behavior:"smooth"});
+    }, 2019);
+</script>
