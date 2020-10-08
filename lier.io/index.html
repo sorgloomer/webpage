@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shooting game</title>
+    <style>
+        html, body, .game-area, .game-canvas {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        .game-canvas {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-area">
+        <canvas class="game-canvas"></canvas>
+        <a id="myclientlink" style="position:absolute;margin:10px;" focusable="false" target="_blank">open client link</a>
+    </div>
+
+    <script src="game/game.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<body>
+    <div id="mypointer" style="position: absolute; border: 1px solid black; width: 10px; height: 10px;"></div>
+
+
+    <div id="myprediction" style="position: absolute; border: 1px solid red; width: 10px; height: 10px;"></div>
+    <div id="mydelayed" style="position: absolute; border: 1px solid green; width: 10px; height: 10px;"></div>
+    <div id="myavg" style="position: absolute; border: 1px solid blue; width: 10px; height: 10px;"></div>
+</body>
+
+<script>
+    var realtimeTimestamp = performance.now() / 1000;
+    var networkTimestamp = realtimeTimestamp;
+    var networkTimespan = 1;
+    var delayedPosition2, delayedPosition1;
+    delayedPosition1 = delayedPosition2 = vec(0, 0);
+    var mouse = vec(0, 0);
+    document.body.addEventListener("mousemove", e => {
+        mouse = vec(e.clientX, e.clientY);
+    });
+
+    var INTERVAL_S = 0.02;
+    var NETWOR_INTERVAL_MS = 500;
+
+    class Body {
+        constructor() {
+            this.p = this.v = vec(0, 0);
+        }
+        step(dt) {
+            this.p = add(this.p, mul(this.v, dt));
+        }
+    }
+
+    var realtimeBody = new Body(), networkBody = new Body(), networkBodyLast = new Body();
+    var interp = 0;
+
+    setInterval(() => {
+        var nextTimestamp = performance.now() / 1000;
+        var frameTimespan = nextTimestamp - realtimeTimestamp;
+        realtimeTimestamp = nextTimestamp;
+
+        var np = moveTowards(realtimeBody.p, mouse, 500 * INTERVAL_S);
+        realtimeBody.v = mul(sub(np, realtimeBody.p), 1/INTERVAL_S);
+        realtimeBody.p = np;
+
+        networkBody.step(INTERVAL_S);
+        networkBodyLast.step(INTERVAL_S);
+        interp = Math.max(0, interp - (INTERVAL_S / networkTimespan));
+
+
+        var delayedP = lerp(interp, delayedPosition1, delayedPosition2);
+        var extraP = lerp(interp, networkBody.p, networkBodyLast.p);
+
+
+        position(mypointer, realtimeBody.p);
+        position(myprediction, extraP);
+        position(mydelayed, delayedP);
+        position(myavg, lerp(0.5, delayedP, extraP));
+
+    }, INTERVAL_S * 1000);
+
+    setInterval(() => {
+        delayedPosition2 = delayedPosition1;
+        delayedPosition1 = realtimeBody.p;
+        networkTimespan = realtimeTimestamp - networkTimestamp;
+        networkTimestamp = realtimeTimestamp;
+        networkBodyLast = networkBody;
+        networkBody = new Body();
+        networkBody.p = realtimeBody.p;
+        networkBody.v = realtimeBody.v;
+        interp = 1;
+    }, NETWOR_INTERVAL_MS);
+
+    function lerp(x, a, b) { return add(a, mul(sub(b, a), x)); }
+    function vec(x, y) { return {x, y}; }
+    function sub(a, b) { return {x: a.x - b.x, y: a.y - b.y}; }
+    function add(a, b) { return {x: a.x + b.x, y: a.y + b.y}; }
+    function mul(a, m) { return {x: a.x * m, y: a.y * m}; }
+    function abs(a) { return Math.sqrt(dot(a, a)); }
+    function dot(a, b) { return a.x * b.x + a.y * b.y; }
+    function norm(a) { var l = abs(a); return l > 0.00001 ? mul(a, 1/abs(a)) : vec(0, 0); }
+
+    function moveTowards(p, t, v) {
+        var d = sub(t, p);
+        var l = abs(d);
+        if (l < v) {
+            return t;
+        }
+        return add(p, mul(d, v / l));
+    }
+
+    function position(el, p) {
+        el.style.left = (p.x - 5) + "px";
+        el.style.top = (p.y - 5) + "px";
+    }
+</script>
